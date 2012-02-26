@@ -70,6 +70,34 @@ class Model_Pagelayout {
 		return '<ul>' . $li . '</ul>';
 	}
 
+	/*
+	 *	buildFooterLastHtml
+	 * 
+	 *	@todo cache the html results for the view
+	 */
+	static public function buildHeaderMenuHtml() 
+	{
+
+		$results = Factory_State::getPageList();
+
+		$li = '';
+		
+		
+		
+		foreach($results as $list)
+		{
+			$li_class = ( $list['post_name']=='sitter-search'? 'current_page_item' : 'page_item');
+			$li .= '<li class="' . $li_class . '"><a href="' . 
+				Service_Pageutility::getApplicationUrl() . 
+				$list['post_name'] . 
+				'" title="' . $list['post_title'] . 
+				'">' . 
+				$list['post_title']  . 
+				'</a></li>';
+			
+		}
+		return '<div class="menu"><ul>' . $li . '</ul></div><!-- menu -->';
+	}
 
 	/*
 	 *	buildCityHtml

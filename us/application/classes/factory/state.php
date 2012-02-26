@@ -79,7 +79,8 @@ class Factory_State {
 	{
 		$a_select = array('ID','post_name','post_title', 'guid');
 
-		$query =  DB::select_array($a_select)->from('lfas_posts')->where('post_type', '=', 'page')->and_where('post_parent', '=', '0');
+		$query =  DB::select_array($a_select)->from('lfas_posts')->where('post_type', '=', 'page')->and_where('post_parent', '=', '0')->and_where('post_status', '=', 'publish');
+		// echo $query;
 		return $query->execute();
 	}
 

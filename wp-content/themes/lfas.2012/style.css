@@ -1889,9 +1889,11 @@ h3.sitter-search-title {
 
 .widget_advanced_search h3.sitter-count-title {
 	/* color: #CB4F00; */
-	font-size: 20px;
+	color: #1982D1;
+	font-size: 22px;
 	font-weight: 900;
 }
+
 
 
 .widget_advanced_search h4 {

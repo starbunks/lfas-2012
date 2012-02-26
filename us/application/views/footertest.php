@@ -8,10 +8,7 @@
 				<div id="cityfooter">
 					<?php echo '<h2>' . $footer_header . '</h2>'; ?>
 				<ul>
-					<?php 
-					// echo Service_Pageutility::getFooterCityList(); 
-					echo $footer_city_list;
-					?>
+					<?php echo $footer_city_list; ?>
 				</ul>
 	
 			</div> <!-- end cityfooter -->

@@ -1,4 +1,14 @@
 <?php
+
+/**
+ *
+ * http://codex.wordpress.org/Changing_The_Site_URL
+ *
+ */
+
+// update_option('siteurl','http://localhost:8888');
+// update_option('home','http://localhost:8888');
+
 /**
  * Twenty Eleven functions and definitions
  *

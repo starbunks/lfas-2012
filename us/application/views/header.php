@@ -51,6 +51,8 @@
 			<?php echo Service_Pageutility::getZipSearchForm();?>
 			
 			<nav id="access" role="navigation">
-				<?php echo Service_Pageutility::getMainMenu();?>
+
+				<?php echo $header_menu; ?>
+
 			</nav><!-- #access -->
 	</header><!-- #branding -->
