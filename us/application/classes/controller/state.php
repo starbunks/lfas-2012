@@ -3,10 +3,17 @@
 class Controller_State extends Controller_Pagelayout {
 
 	
+	/**
+	*	action_index
+	*
+	*	@todo implement table of contents
+	**/
     public function action_index()
     {    
 		$state_name = $this->request->param('state');
 
+	
+		
 		$found_state_name = Factory_State::isState($state_name);
 		if ($found_state_name)
 		{
@@ -15,13 +22,13 @@ class Controller_State extends Controller_Pagelayout {
 			$this->page_name = 'Controller_State.index';
 			$this->tagline = Service_Pageutility::getTageline('', $found_state_name);
 
-			$v = View::factory('default');
+			$v = View::factory('state');
 		
 			// Page specific
 			$v->body = Model_Pagelayout::buildCityHtml($found_state_name);
 			$v->page_h1 = Service_Breadcrumb::getPageBreadCrumbState($found_state_name);
 			$v->page_breadcrumb = Service_Breadcrumb::buildState($found_state_name);
-			
+			$v->table_of_contents = Model_Pagelayout::buildTableOfContentsHtml($state_name);			
 			
 			// instance of sub views
 			$v->header = View::factory('header');
@@ -49,7 +56,7 @@ class Controller_State extends Controller_Pagelayout {
 	public function action_city()
 	{
 		$page_number = 1;
-		
+
 		// URI from bootstrap
 		$city_name = $this->request->param('city');
 		$state_name = $this->request->param('state');
@@ -60,7 +67,7 @@ class Controller_State extends Controller_Pagelayout {
 			// Pagelayout overrides
 			$this->page_name = 'Controller_State.city';
 			$found_state_name = $state_name;
-			$this->tagline = Service_Pageutility::getTageline($city_name, $found_state_name);
+			$this->tagline = Service_Pageutility::getTageline($city_name, $found_state_name, $zip_code);
 			
 			// query string parameters
 			$a_qs = Kohana_Request::current()->query();
@@ -142,7 +149,7 @@ class Controller_State extends Controller_Pagelayout {
 		$this->page_name = 'Controller_State.list';
 		$this->tagline = Service_Pageutility::getTageline();
 		
-		$v = View::factory('default');
+		$v = View::factory('state');
 				
 		// Page specific
 		$v->body = Model_Pagelayout::buildStateHtml();

@@ -81,8 +81,9 @@ class Model_Pagelayout {
 		$results = Factory_State::getPageList();
 
 		$li = '';
-		
-		
+		$li_home_page = '<li class="current_page_item"><a href="' . 
+						Service_Pageutility::getApplicationUrl() . 
+						'" title="Home">Home</a></li>';
 		
 		foreach($results as $list)
 		{
@@ -96,7 +97,8 @@ class Model_Pagelayout {
 				'</a></li>';
 			
 		}
-		return '<div class="menu"><ul>' . $li . '</ul></div><!-- menu -->';
+
+		return '<div class="menu"><ul>' . $li_home_page . $li . '</ul></div><!-- menu -->';
 	}
 
 	/*
@@ -107,17 +109,39 @@ class Model_Pagelayout {
 	static public function buildCityHtml($state_name)
 	{
 		$results = Factory_State::getZipByState($state_name);
-		$html_city_list = '';
+		// $html_city_list = '';
+		$state_list = '';
+		$results_count = count($results);
+		$set = 0;	// 
+		$n = 0;
+		$column_count = ($results_count / 3) - 1;
+
+
+		// echo '<p>results_count [' . $results_count . ']</p>';
+		// echo '<p>column_count [' . $column_count . ']</p>';
 		
+		$state_list .= '<div id="state-list"><ul>';
+				
 		foreach($results as $zip)
 		{
-			$html_city_list .= '<li>' .
+			$state_list .= '<li>' .
 								Service_Breadcrumb::getPageBreadCrumbCity($zip['city_name'], 
 																		$state_name, 
 																		$zip['zip_code'], TRUE) .
 								'</li>';										
+
+			
+			// $n++;
+			// if ($n > $column_count)
+			// {
+			// 	$n = 0;
+			// 	$set++;
+			// 	$state_list .= '</ul></div><div id="state-list"><ul>';
+			// }
 		}
-		return $html_city_list;
+		
+		$state_list .= '</ul></div>';
+		return $state_list;
 	}
 	
 	
@@ -125,35 +149,78 @@ class Model_Pagelayout {
 	 *	buildStateHtml
 	 *
 	 *	@todo cache the html results for the view
+	 * @todo add title to url
 	 */
 	static public function buildStateHtml()
 	{
 		$results = Factory_State::getStates();
 		$state_list = '';
 		$results_count = count($results);
-		$set = 0;
+		$set = 0;	// 
 		$n = 0;
-		$column_count = $results_count / 3;
+		$column_count = ($results_count / 3) - 1;
 		
+		// echo '<p>results_count [' . $results_count . ']</p>';
+		// echo '<p>column_count [' . $column_count . ']</p>';
+		
+		$state_list .= '<div id="state-list"><ul>';
+					
 		foreach($results as $state)
 		{
-			$state_list .= '<li><a href="' . url::base() . $state['state_url'] . '">' . $state['state_name'] . '</a></li>';
+
+			$state_list .= '<li><a href="' . url::base() . $state['state_url'] . 
+							'">' . $state['state_name'] . '</a></li>';
 			
-		    $a_state_list[$set][$state['id']]['state_name'] = $state['state_name'];
-		    $a_state_list[$set][$state['id']]['state_url'] = url::base() . $state['state_url'];
+		    // $a_state_list[$set][$state['id']]['state_name'] = $state['state_name'];
+		    // $a_state_list[$set][$state['id']]['state_url'] = url::base() . $state['state_url'];
 			
 			$n++;
 			if ($n > $column_count)
 			{
 				$n = 0;
 				$set++;
+				$state_list .= '</ul></div><div id="state-list"><ul>';
 			}
 		}
 
-		$state_list = '<ul>' . $state_list . '</ul>';
+		// $state_list = '<ul>' . $state_list . '</ul>';
 		return $state_list;
 	}
 	
-	
+	/*
+	 *	buildTableOfContentsHtml
+	 *
+	 *	@todo cache the html results for the view
+	 */
+	static public function buildTableOfContentsHtml($state)
+	{
+		$results = Factory_State::getCityList($state);
+		
+		$a_city_list = array();
+		$a_city_first_letter = array();
+		
+		$html_city_first_letter = '';
+		$html_city_first_letter  .= '<div id="state-results-tableofcontents"><div id="select-location">Select Location</div><ul>';
+		
+		foreach($results as $city)
+		{
+			$a_city_list[$city['zip_code']]['name'] = $city['city_name'];
+			$a_city_list[$city['zip_code']]['first_letter'] = substr($city['city_name'],0,1);
+			
+			$a_city_first_letter[substr($city['city_name'],0,1)] = $city['city_name'];			
+		}
+
+
+		foreach($a_city_first_letter as $letter => $name)
+		{
+			$html_city_first_letter .= '<li><a href="' . 
+			 							'#' . $name .
+										'" title="link to cities beginning with the letter ' . strtoupper($letter) . '. ">' . $letter . '</a></li>';
+			
+		}
+		$html_city_first_letter .= '</ul></div><div id="state-results-tableofcontents"><ul>';
+
+		return $html_city_first_letter;
+	}
 	
 } // End

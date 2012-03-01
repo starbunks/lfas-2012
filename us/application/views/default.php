@@ -13,6 +13,11 @@
 					<div class="entry-meta">
 						<span class="sep"><?php echo $page_breadcrumb; ?></span>
 					</div><!-- .entry-meta -->
+
+
+					<?php echo $table_of_contents; ?>
+
+					
 				</header><!-- .entry-header -->
 
 				<div class="entry-content">

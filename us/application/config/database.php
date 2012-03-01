@@ -1,5 +1,4 @@
 <?php
-
 return array
   (
   	'default' => array
@@ -18,5 +17,4 @@ return array
   		'profiling'    => TRUE,
   	),
   );
-  
-  ?>
+?>

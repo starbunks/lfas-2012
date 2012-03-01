@@ -15,6 +15,7 @@ class Controller_Pagelayout extends Controller {
         View::bind_global('tagline', $this->tagline);
         View::bind_global('header', $this->header);
         View::bind_global('header_menu', $this->header_menu);
+        View::bind_global('table_of_contents', $this->table_of_contents);
 
 
         View::bind_global('footer_header', $this->footer_header);
@@ -31,6 +32,8 @@ class Controller_Pagelayout extends Controller {
 		$this->header = 'something';
 		$this->header_menu = Model_Pagelayout::buildHeaderMenuHtml();
 		$this->tagline = 'I know beans';
+		
+		$this->table_of_contents = '';
 	}
 
 } // End Controller_Pagelayout

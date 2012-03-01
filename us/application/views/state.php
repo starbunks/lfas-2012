@@ -13,31 +13,21 @@
 					<div class="entry-meta">
 						<span class="sep"><?php echo $page_breadcrumb; ?></span>
 					</div><!-- .entry-meta -->
+
+					<?php echo ($table_of_contents != '' ? $table_of_contents : ''); ?>
+
 				</header><!-- .entry-header -->
 
 				<div class="entry-content">
-					<div>
-						<p>
-						<?php 
-							foreach($page_body as $i => $a_state_list)
-							{
-								echo '<ul id="state-list">';
-								foreach($a_state_list as $state_list)
-								{
-									echo '<li><a href="' . $state_list['state_url'] . '">' . $state_list['state_name'] . '</a></li>';
-								}
-								echo '</ul>';
-							}
-						?>
-						</p>
-					</div>
+						<?php echo $body; ?>
 				</div><!-- .entry-content -->
 
 			</article>
 		</div><!-- #content -->
 	</div><!-- #primary -->
 
+
 <?php include Kohana::find_file('views', 'state_sidebar') ?>
 
 <?php include Kohana::find_file('views', 'footer') ?>
-<!-- #state view -->
+<!-- #default view>

@@ -34,7 +34,7 @@ class Service_Pageutility {
 	* @param $city_name='', $state_name=''
 	*
 	**/
-	public static function getTageline($city_name='', $state_name='')
+	public static function getTageline($city_name='', $state_name='', $zip_code='')
 	{
 		$pre_tagline = "Helping Parents Find Child Care";
 		$in = ' in ';
@@ -49,7 +49,7 @@ class Service_Pageutility {
 		}
 		else
 		{
-			$tagline = $pre_tagline . $in . ucfirst($city_name) . ', ' . ucfirst($state_name);
+			$tagline = $pre_tagline . $in . ucfirst($city_name) . ', ' . ucfirst($state_name) . '  ' . $zip_code;
 		}
 		
 		return $tagline;

@@ -2909,6 +2909,7 @@ li.sitterlist {list-style-type:none; margin-bottom: 15px;}
 #state-list {
 	position: relative;
 	float: left;
+/*	width: 190px;	*/
 }
 
 
@@ -2942,7 +2943,7 @@ li.sitterlist {list-style-type:none; margin-bottom: 15px;}
 	float: left; 
 	margin: 0px; 
 	padding: 0px 9px 0px 6px; 
-	background: url( 'http://lookingforasitter.com/wp-content/themes/lookingforasitter/img/list_pipe.gif' ) left no-repeat;
+	background: url( '/wp-content/themes/lfas.2012/images/list_pipe.gif' ) left no-repeat;
 	white-space:nowrap; 
 	font-size: 12px;
 }
@@ -2968,7 +2969,31 @@ li.sitterlist {list-style-type:none; margin-bottom: 15px;}
 	float: left; 
 	margin: 0px; 
 	padding: 0px 9px 0px 6px; 
-	background: url( 'http://lookingforasitter.com/wp-content/themes/lookingforasitter/img/list_pipe.gif' ) left no-repeat;
+	background: url( '/wp-content/themes/lfas.2012/images/list_pipe.gif' ) left no-repeat;
 	white-space:nowrap; 
 	font-size: 12px;
+}
+
+#state-results-tableofcontents ul { 
+	position: relative; 
+	overflow: hidden; 
+	list-style: none; 
+	margin: 0px 4px 0px 10px; 
+/*	padding: 10px 0px 0px; */
+}
+
+#state-results-tableofcontents ul li { 
+	position: relative; 
+	left: -6px; 
+	float: left; 
+	margin: 0px; 
+	padding: 0px 9px 0px 8px; 
+	background: url( '/wp-content/themes/lfas.2012/images/list_pipe.gif' ) left no-repeat;
+	white-space:nowrap; 
+	font-size: 16px;
+}
+
+#select-location {
+	margin: 18px 0px 0px 2px; 
+	font-size: 14px;
 }

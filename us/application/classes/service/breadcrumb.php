@@ -77,7 +77,8 @@ class Service_Breadcrumb {
 	{
 
 		$link_title = 'Looking For A Sitter in ' . $city_name . ', ' . $state_name;
-		$html_return_a = '<a href="' . 
+		$html_return_a = 	'<a name="' . $city_name . '"></a>' . 
+							'<a href="' . 
 									Service_Pageutility::getApplicationUrl() . 
 									$city_name . '/' . 
 									$state_name . '/' . 
