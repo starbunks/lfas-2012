@@ -55,7 +55,10 @@ class Model_Pagelayout {
 		$results = Factory_State::getPageList();
 
 		$li = '';
-		
+		$li_home_page = '<li><a href="' . 
+						Service_Pageutility::getSiteUrl() . 
+						'" title="Home">Home</a></li>';
+						
 		foreach($results as $list)
 		{
 			$li .= '<li><a href="' . 
@@ -67,7 +70,7 @@ class Model_Pagelayout {
 				'</a></li>';
 			
 		}
-		return '<ul>' . $li . '</ul>';
+		return '<ul>' . $li_home_page . $li . '</ul>';
 	}
 
 	/*
@@ -82,7 +85,7 @@ class Model_Pagelayout {
 
 		$li = '';
 		$li_home_page = '<li class="current_page_item"><a href="' . 
-						Service_Pageutility::getApplicationUrl() . 
+						Service_Pageutility::getSiteUrl() . 
 						'" title="Home">Home</a></li>';
 		
 		foreach($results as $list)
