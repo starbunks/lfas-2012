@@ -1,16 +1,14 @@
-# kohana requests
-
-# RewriteRule us/alabama http://www.google.com/ [R,L]
-# RewriteRule ^/?(us)/([-a-zA-Z_+]+)*$ us/$1 [L]
 
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
+Options +FollowSymLinks
+Options -MultiViews
 RewriteEngine On
 RewriteBase /
-RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.php [L]
+# RewriteRule . /index.php [L]
+RewriteRule ^(.*)$ index.php?/$1 [QSA,L]
 </IfModule>
 
 # END WordPress
