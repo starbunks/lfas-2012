@@ -131,14 +131,6 @@ Route::set('search-query', 'search', array('zip' => '[0-9]{5}'))
 ));
 
 
-//  Route::set('michigantest', 'michigantest(/<state>)', array('[a-zA-Z]'))
-// 	->defaults(array(
-// 		'controller' => 'michigantest',
-// 		'action' => 'index',
-// 		'state' => NULL,
-// ));
-
-
 Route::set('us-city-zip', '<city>/<state>/<zip>', array('zip' => '[0-9]{5}'))
 		->defaults(array(
 		'controller'=> 'state',
@@ -148,18 +140,21 @@ Route::set('us-city-zip', '<city>/<state>/<zip>', array('zip' => '[0-9]{5}'))
 		'state' => NULL,
 	));
 
+
+Route::set('sitemap-state', 'sitemap/state')
+		->defaults(array(
+		'controller' => 'sitemap',
+		'action' => 'state',
+	));
 	
-
-
-// Route::set('michigantest-city', 'michigantest/<city>/<state>/<zip>', array('zip' => '[0-9]{5}'))
-// 	->defaults(array(
-// 		'controller' => 'michigantest',
-// 		'action' => 'city',
-// 		'zip' => NULL,
-// 		'city' => NULL,
-// 		'state' => NULL,
-// ));
-
+Route::set('sitemap-zip', 'sitemap/city(/<state>)', array('[a-zA-Z]'))
+		->defaults(array(
+		'controller' => 'sitemap',
+		'action' => 'city',
+		'state' => NULL,
+	));
+		
+	
 Route::set('us', '<state>', array('[a-zA-Z]'))
 		->defaults(array(
 		'controller' => 'state',

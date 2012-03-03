@@ -1,4 +1,2 @@
 User-agent: *
-Disallow: /dataxml/
-Disallow: /dev/
 Allow: /
