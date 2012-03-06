@@ -42,14 +42,13 @@ class Factory_State {
 	/**
 	*	getStates
 	*
-	*	state VALUES (id, state_name, state_abbv, state_url)
+	*	state VALUES (state name, state url)
 	*
 	*	todo: use orm
 	*/
 	static function getStates()
 	{
-		// return DB::select()->from('state')->order_by('state_name', 'ASC');
-		$query = DB::select()->from('state')->order_by('state_name', 'ASC');
+		$query = DB::select()->from('name_value')->where('type', '=', 'state-url')->order_by('name', 'ASC');
 		$results = $query->execute();
 		return $results;
 	}
@@ -69,6 +68,15 @@ class Factory_State {
 	*	SELECT zip_id, zip_code, substring(city_name,1,1) as first_letter, city_name, state_name 
 	*	FROM `zip_info_state` WHERE `state_name` LIKE '%Alaska%' GROUP BY first_letter ORDER BY `city_name` ASC
 	*
+	*
+	*	list of states by proper name, pretty url, abreviation
+	*	select nv1.name AS 'state', nv1.value AS 'state-url', nv2.value AS 'stateabrev' 
+	*	from name_value nv1, name_value nv2 
+	*	where nv1.type = 'state-url' 
+	*	AND nv2.type = 'stateabrev' 
+	*	AND nv1.name = nv2.name;
+	*
+	*
 	*/
 	static function getCityList($state)
 	{
@@ -78,6 +86,7 @@ class Factory_State {
 		$query =  DB::select_array($a_select)->from('zip_info_state')->where('state_name', 'LIKE', '%'.$state.'%')->order_by('city_name', 'ASC');
 		return $query->execute();
 	}
+
 
 
 	/**

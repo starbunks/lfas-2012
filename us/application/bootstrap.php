@@ -141,19 +141,42 @@ Route::set('us-city-zip', '<city>/<state>/<zip>', array('zip' => '[0-9]{5}'))
 	));
 
 
-Route::set('sitemap-state', 'sitemap/state')
+// Route::set('sitemap-state', 'sitemap/state')
+// 		->defaults(array(
+// 		'controller' => 'sitemap',
+// 		'action' => 'state',
+// 	));
+	
+// Route::set('sitemap-zip', 'sitemap/city(/<state>)', array('[a-zA-Z]'))
+// 		->defaults(array(
+// 		'controller' => 'sitemap',
+// 		'action' => 'city',
+// 		'state' => NULL,
+// 	));
+
+//builds all state maps
+Route::set('sitemap-index', 'sitemap')
+		->defaults(array(
+		'controller' => 'sitemap',
+		'action' => 'index',
+	));
+
+//builds all state maps
+Route::set('sitemap-states', 'sitemap/us')
 		->defaults(array(
 		'controller' => 'sitemap',
 		'action' => 'state',
 	));
+
 	
-Route::set('sitemap-zip', 'sitemap/city(/<state>)', array('[a-zA-Z]'))
+//builds one state map at a time	
+Route::set('sitemap', 'sitemap(/<state>)', array('[a-zA-Z]'))
 		->defaults(array(
 		'controller' => 'sitemap',
 		'action' => 'city',
-		'state' => NULL,
 	));
-		
+
+	
 	
 Route::set('us', '<state>', array('[a-zA-Z]'))
 		->defaults(array(

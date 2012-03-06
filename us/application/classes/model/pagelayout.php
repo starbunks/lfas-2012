@@ -170,9 +170,8 @@ class Model_Pagelayout {
 					
 		foreach($results as $state)
 		{
-
-			$state_list .= '<li><a href="' . url::base() . $state['state_url'] . 
-							'">' . $state['state_name'] . '</a></li>';
+			$state_list .= '<li><a href="' . url::base() . $state['value'] . 
+							'">' . $state['name'] . '</a></li>';
 			
 		    // $a_state_list[$set][$state['id']]['state_name'] = $state['state_name'];
 		    // $a_state_list[$set][$state['id']]['state_url'] = url::base() . $state['state_url'];

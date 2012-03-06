@@ -35,7 +35,8 @@ class Model_Sitemap {
 		}		
 		
 		$node = $this->buildMapHeader() . $node . $this->buildMapFooter();
-		return $node;
+		$this->buildSitemapFile($node, $state);
+		return 'done ' . $state;
 	}
 
 
@@ -45,18 +46,36 @@ class Model_Sitemap {
 	**/
 	public function buildStateMap()
 	{
+		$state = 'us';
+		
 		$results = Factory_State::getStates();
+		
+		
 		$node = '';
 		$app_url = Service_Pageutility::getApplicationUrl();
 		
-		foreach($results as $state)
+		foreach($results as $column)
 		{
-			$node .= $this->buildUrl($app_url . $state['state_url']);
+			$node .= $this->buildUrl($app_url . $column['value']);
 		}
 		
 		$node = $this->buildMapHeader() . $node . $this->buildMapFooter();
-		return $node;
-		
+		$this->buildSitemapFile($node, $state);
+		return 'done ' . $state;		
+	}
+	
+	/**
+	*
+	*
+	*
+	**/
+	public function buildSitemapFile($node, $file_name_postfix)
+	{
+		$file_name = '/Library/WebServer/Documents/lfascom/public_html/sitemap-' . $file_name_postfix . '.xml';
+		$handle = fopen($file_name, "w");
+		fwrite($handle, $node);
+	  	fclose($handle);
+		return;
 	}
 
 
@@ -67,33 +86,37 @@ class Model_Sitemap {
 			$lastmod = date('Y-m-d') . 'T' . date('H:i:s') . '+00:00';
 		}
 		
-		$html = '
-		<url>
-			<loc>' . 
-			$loc . 
-			'</loc>
-			<lastmod>' . $lastmod . '</lastmod>
-			<changefreq>' . $changefreq . '</changefreq>
-			<priority>' . $priority . '</priority>
-		</url>';
-		return $html;
+		$xml = '
+				<url>
+				
+				' .
+				'<loc>' . $loc . '</loc>
+				' .
+				'<lastmod>' . $lastmod . '</lastmod>
+				' .
+				'<changefreq>' . $changefreq . '</changefreq>
+				' .
+				'<priority>' . $priority . '</priority>
+				' . '
+				</url>';
+		
+		return $xml;
 	}
 	
 	
 	public function buildMapHeader()
 	{		
-		$html = '<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl"' . 
-		'href="http://lookingforasitter.com/wp-content/plugins/google-sitemap-generator/sitemap.xsl"?>' . 
+		$html = '<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="http://localhost:8888/wp-content/plugins/google-sitemap-generator/sitemap.xsl"?>' . 
 		'<!-- generated-on="' . date('F,j Y g:i a') . '" -->' . 
-		'<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
-		
+		'
+		<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+		';
 		return $html;
 	}
 	
 	public function buildMapFooter()
 	{
-		$html = '
-		</urlset>';
+		$html = '</urlset>';
 		return $html;		
 	}
 	
