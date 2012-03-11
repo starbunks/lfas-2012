@@ -115,8 +115,8 @@ class Controller_State extends Controller_Pagelayout {
 			$v->page_h1 = Service_Pageutility::getSitterPageTitle($city_name, $state_name, $zip_code);
 			$v->page_breadcrumb = Service_Breadcrumb::build($city_name, $state_name, $zip_code);
 			
-			$v->html_facet_on = $html_facet['on'];
-			$v->html_facet_off = $html_facet['off'];
+			// $v->html_facet_on = $html_facet['on'];
+			// $v->html_facet_off = $html_facet['off'];
 			
 			$v->state_list = $html_sitter_data;
 			$v->pagination = $html_pagination;

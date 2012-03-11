@@ -14,12 +14,12 @@
 
 	<h4>Selected Options (off)</h4>
 	<ul id="group_1">
-		<?php echo $html_facet_off; ?>
+		<?php //echo $html_facet_off; ?>
 	</ul>
 <hr>
 	<h4>More Search Options</h4>
 	<ul id="group_2">
-		<?php echo $html_facet_on; ?>
+		<?php //echo $html_facet_on; ?>
 	</ul>
  -->
 
