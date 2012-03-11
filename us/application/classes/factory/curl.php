@@ -22,8 +22,11 @@ class Factory_Curl {
 	}
 
 
-	/*
-	* @return false if errors else xml
+	/**
+	*
+	*	getCurlData - wrapper to capture errors
+	* 	
+	*	@return false if errors else xml
 	*/
 	public function getCurlData() 
 	{

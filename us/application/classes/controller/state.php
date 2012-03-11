@@ -6,7 +6,6 @@ class Controller_State extends Controller_Pagelayout {
 	/**
 	*	action_index
 	*
-	*	@todo implement table of contents
 	**/
     public function action_index()
     {    
@@ -89,7 +88,6 @@ class Controller_State extends Controller_Pagelayout {
 			Factory_Sittercity::factory()->setLocation($a_location);
 			
 			// validate the query string
-			// @todo move this to the Factory_Sittercity
 			$a_valid_qs = Factory_Sittercity::factory()->validateQueryString($a_qs);
 			
 			// build the curl url
@@ -108,7 +106,7 @@ class Controller_State extends Controller_Pagelayout {
 			$html_pagination = Factory_Sittercity::factory()->getPaginationList($a_location, $a_valid_qs, $page_number, $sitter_count);
 			
 			//Search facets
-			$html_facet = Factory_Sittercity::factory()->buildSearchOptionsFacets($a_location, $a_valid_qs);
+			// $html_facet = Factory_Sittercity::factory()->buildSearchOptionsFacets($a_location, $a_valid_qs);
 			
 			//View
 			$v = View::factory('sitter_results');

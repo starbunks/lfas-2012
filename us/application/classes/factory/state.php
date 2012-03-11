@@ -28,7 +28,10 @@ class Factory_State {
 	/**
 	*	getZipByState
 	*
-	*	todo: cache this query large table
+	*	@todo cache this query large table
+	*
+	*	@todo deprecate this because of getCityList
+	*
 	*/
 	static function getZipByState($state_name, $order_by='city_name', $order_direction='ASC')
 	{
@@ -44,7 +47,7 @@ class Factory_State {
 	*
 	*	state VALUES (state name, state url)
 	*
-	*	todo: use orm
+	*	@todo use orm
 	*/
 	static function getStates()
 	{
@@ -94,7 +97,7 @@ class Factory_State {
 	* 		Query example here
 	*
 	* 	name_value VALUES (id, type, name, value)
-	*	todo: use orm
+	*	@todo use orm
 	*/	
 	static function getFooterCity()
 	{	

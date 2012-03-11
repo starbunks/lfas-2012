@@ -111,7 +111,9 @@ class Model_Pagelayout {
 	 */
 	static public function buildCityHtml($state_name)
 	{
-		$results = Factory_State::getZipByState($state_name);
+		// $results = Factory_State::getZipByState($state_name);
+		$results = Factory_State::getCityList($state_name);		
+		
 		// $html_city_list = '';
 		$state_list = '';
 		$results_count = count($results);

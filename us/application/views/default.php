@@ -11,13 +11,9 @@
 					<?php echo $page_h1; ?>
 					</h1>
 					<div class="entry-meta">
-						<span class="sep"><?php echo $page_breadcrumb; ?></span>
+						<span class="sep"></span>
 					</div><!-- .entry-meta -->
 
-
-					<?php echo $table_of_contents; ?>
-
-					
 				</header><!-- .entry-header -->
 
 				<div class="entry-content">

@@ -115,6 +115,13 @@ Kohana::modules(array(
 * defaults for the URI.
 */
 
+Route::set('dev', 'dev/park(/<action>)')
+	->defaults(array(
+		'directory' => 'dev',
+		'controller' => 'park',
+		'action' => NULL,
+));
+
 
 Route::set('search', 'search/<zip>', array('zip' => '[0-9]{5}'))
 	->defaults(array(
@@ -185,10 +192,9 @@ Route::set('us', '<state>', array('[a-zA-Z]'))
 		'state' => NULL,
 	));
 
-
+// this should be last to capture us/
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
 		'controller' => 'state',
 		'action' => 'list',
-		'state' => NULL,
 ));

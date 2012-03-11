@@ -3,6 +3,9 @@
 class Factory_Sittercity {
 
 	/**
+	* This class builds the curl URL, validates query strings, pagination.
+	* It keeps the requests from the user and the curl url insync
+	*
 	* <<caretype>> may be one of: (childcare, petcare, seniorcare, homecare, tutoring)
 	* 
 	* z 	= zip
@@ -332,7 +335,7 @@ class Factory_Sittercity {
 	/**
  	* getHtml
 	*
-	* @todo move this code to model
+	* @todo move this code to model. make this a view fragment
 	* @param XML DOM $dom
 	* @return String HTML
 	*/
