@@ -71,7 +71,9 @@ class Model_Sitemap {
 	**/
 	public function buildSitemapFile($node, $file_name_postfix)
 	{
-		$file_name = '/Library/WebServer/Documents/lfascom/public_html/sitemap-' . $file_name_postfix . '.xml';
+		// $file_name = '/Library/WebServer/Documents/lfascom/public_html/sitemap-' . $file_name_postfix . '.xml';
+		$file_name = $_SERVER['DOCUMENT_ROOT'] .'/sitemap-' . $file_name_postfix . '.xml';
+		
 		$handle = fopen($file_name, "w");
 		fwrite($handle, $node);
 	  	fclose($handle);
@@ -106,7 +108,8 @@ class Model_Sitemap {
 	
 	public function buildMapHeader()
 	{		
-		$html = '<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="http://localhost:8888/wp-content/plugins/google-sitemap-generator/sitemap.xsl"?>' . 
+		$html = '<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="' .Service_Pageutility::getSiteUrl() . 
+				'wp-content/plugins/google-sitemap-generator/sitemap.xsl"?>' . 
 		'<!-- generated-on="' . date('F,j Y g:i a') . '" -->' . 
 		'
 		<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
