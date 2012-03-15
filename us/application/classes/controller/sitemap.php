@@ -7,10 +7,11 @@ class Controller_Sitemap extends Controller {
     {
 		echo '<h2> Build Map</h2>';
 		$results = Factory_State::getStates();
+		
 		foreach($results as $column)
 		{
-			echo '<p> Build Map State [' . $column['value'] . ']</p>';
-			echo Model_Sitemap::factory()->buildCityMap($column['value']);
+			echo '<p> Build Map State [' . $column['name'] . ']</p>';
+			echo Model_Sitemap::factory()->buildCityMap($column['name'], $column['value']);
 		}
 		echo Model_Sitemap::factory()->buildStateMap();
 		echo 'done';
