@@ -23,7 +23,7 @@ class Model_Sitemap {
 	*	buildMap
 	*
 	**/
-	public function buildCityMap($state)
+	public function buildCityMap($state, $filename)
 	{
 		$results = Factory_State::getCityList($state);
 		$node = '';
@@ -35,7 +35,7 @@ class Model_Sitemap {
 		}		
 		
 		$node = $this->buildMapHeader() . $node . $this->buildMapFooter();
-		$this->buildSitemapFile($node, $state);
+		$this->buildSitemapFile($node, $filename);
 		return 'done ' . $state;
 	}
 
@@ -71,8 +71,8 @@ class Model_Sitemap {
 	**/
 	public function buildSitemapFile($node, $file_name_postfix)
 	{
-		// $file_name = '/Library/WebServer/Documents/lfascom/public_html/sitemap-' . $file_name_postfix . '.xml';
-		$file_name = $_SERVER['DOCUMENT_ROOT'] .'/sitemap-' . $file_name_postfix . '.xml';
+		$file_name = '/Library/WebServer/Documents/lfascom/output/sitemap-' . $file_name_postfix . '.xml';
+		// $file_name = $_SERVER['DOCUMENT_ROOT'] .'/sitemap-' . $file_name_postfix . '.xml';
 		
 		$handle = fopen($file_name, "w");
 		fwrite($handle, $node);
