@@ -71,8 +71,8 @@ class Model_Sitemap {
 	**/
 	public function buildSitemapFile($node, $file_name_postfix)
 	{
-		$file_name = '/Library/WebServer/Documents/lfascom/output/sitemap-' . $file_name_postfix . '.xml';
-		// $file_name = $_SERVER['DOCUMENT_ROOT'] .'/sitemap-' . $file_name_postfix . '.xml';
+		// $file_name = '/Library/WebServer/Documents/lfascom/output/sitemap-' . $file_name_postfix . '.xml';
+		$file_name = $_SERVER['DOCUMENT_ROOT'] .'/sitemap-' . $file_name_postfix . '.xml';
 		
 		$handle = fopen($file_name, "w");
 		fwrite($handle, $node);

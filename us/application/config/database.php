@@ -5,11 +5,11 @@ return array
   	(
   		'type'       => 'mysql',
   		'connection' => array(
-  			'hostname'   => 'localhost',
+  			'hostname'   => '127.0.0.1',
   			'username'   => 'root',
-  			'password'   => 'root',
+  			'password'   => 'password1',
   			'persistent' => FALSE,
-  			'database'   => 'lfasnew',
+  			'database'   => 'lfas',
   		),
   		'table_prefix' => '',
   		'charset'      => 'utf8',

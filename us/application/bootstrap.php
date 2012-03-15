@@ -115,10 +115,10 @@ Kohana::modules(array(
 * defaults for the URI.
 */
 
-Route::set('dev', 'dev/park(/<action>)')
+Route::set('dev', 'dev/<controller>(/<action>)')
 	->defaults(array(
 		'directory' => 'dev',
-		'controller' => 'park',
+		'controller' => NULL,
 		'action' => NULL,
 ));
 
