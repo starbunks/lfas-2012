@@ -11,15 +11,15 @@ class Factory_State {
 	*/
 	static function isState($state_name)
 	{
-		$query = DB::select()->from('state')->where('state_url', 'LIKE', $state_name);
-
+		$query =  DB::select_array()->from('name_value')->where('type', '=', 'state-url')->and_where('value', 'LIKE', $state_name);
+		
 		$results = $query->execute();
 		$found = FALSE;
 		foreach($results as $state)
 		{
 		    //$found = TRUE;
 			// Need to return the state name without the hyphen
-			$found = $state['state_name'];
+			$found = $state['name'];
 		}
 		return $found;
 	}
