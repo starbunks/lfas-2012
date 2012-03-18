@@ -6,7 +6,7 @@ class Factory_Park {
 	
 	
 	/**
-	*	getZipByState
+	*	getParkRoll
 	*
 	*	todo: cache this query large table
 	*/

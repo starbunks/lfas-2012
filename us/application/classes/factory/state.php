@@ -64,7 +64,7 @@ class Factory_State {
 	*
 	*	list of states
 	*	SELECT zip_id, zip_code, substring(city_name,1,1), city_name, state_name 
-	*	FROM `zip_info_state` WHERE `state_name` LIKE *	'%Alaska%' ORDER BY `city_name` ASC 
+	*	FROM `zips` WHERE `state_name` LIKE *	'%Alaska%' ORDER BY `city_name` ASC 
 	*
 	*
 	*	list of states BY FIRST INITIAL
@@ -83,10 +83,10 @@ class Factory_State {
 	*/
 	static function getCityList($state)
 	{
-		// $a_select = array('zip_id', 'zip_code', substring('city_name',1,1), 'city_name', 'state_name');
 		$a_select = array('zip_id', 'zip_code', 'city_name', 'state_name');
 		
-		$query =  DB::select_array($a_select)->from('zip_info_state')->where('state_name', 'LIKE', '%'.$state.'%')->order_by('city_name', 'ASC');
+		$query =  DB::select_array($a_select)->from('zips')->where('state_name', 'LIKE', '%'.$state.'%')->order_by('city_name', 'ASC');
+				
 		return $query->execute();
 	}
 
